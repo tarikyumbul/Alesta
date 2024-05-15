@@ -1,0 +1,20 @@
+@startuml sea auto 1
+start
+:2. aşamaya başla;
+while (Sayılar algılanmadı) is (evet)
+    :180 derecelik bir alanı taramaya başla;
+    if (Sayılar algılandı?) then (evet)
+        :Dönmeyi durdur;
+    else (hayır)
+    endif
+endwhile (hayır)
+:Sayılara yaklaş;
+while (Kontrol istasyonu sayıyı gönderdi?) is (hayır)
+endwhile (evet)
+:Sayıyı görüş açısında bul;
+:Sayıya doğru ilerle ve altındaki kıyıya yanaş;
+:2. aşamayı bitir;
+:Başlangıç noktasına geri dön;
+
+stop
+@enduml

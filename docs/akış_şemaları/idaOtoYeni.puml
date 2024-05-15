@@ -1,0 +1,39 @@
+@startuml sea auto new
+start
+
+while (Dubalar tespit edildi mi?) is (hayır)
+    :360 derece dön ve görüntüyü işlemeye başla;
+    if (Dubalar tespit edildi mi?) then (evet)
+        :Dur;
+    else (hayır)
+        
+    endif
+    if (İlk tarama mı?) then (evet)
+    else (hayır)
+        :360 derece tamamlanınca dur ve ilerle;
+    endif
+
+endwhile (evet)
+    :Dubalara doğru ilerle;
+
+while (Kıyıya yanaşma tamamlandı mı?) is (hayır)
+
+    while (Sayılar görüş açısında mı?) is (hayır)
+        :En büyük kırmızı ve yeşil dubaların arasındaki alanı baz al;
+        if (Sarı duba algılandı mı?) then (evet)
+            :    Baz alınan alanı sarı dubanın olduğu noktadan\nikiye böl ve geniş olan tarafa doğru ilerle, yönü düzelt;
+        else (hayır)
+        :Baz alınan alana doğru ilerle, yönü düzelt;
+        endif
+    endwhile (evet)
+
+    :Sayılara yaklaş;
+    while (Kontrol istasyonu sayıyı gönderdi mi?) is (hayır)
+    endwhile (evet)
+    :Sayıyı görüş açısında bul;
+    :Sayıya doğru ilerle ve altındaki kıyıya yanaş;
+    endwhile (evet)
+    :Başlangıç noktasına geri dön;
+
+stop
+@enduml

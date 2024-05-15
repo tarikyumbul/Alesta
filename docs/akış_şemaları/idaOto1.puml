@@ -1,0 +1,19 @@
+@startuml sea auto 2
+start
+:1. aşamaya başla, alanı bul ve alana ilerle;
+while (Dubalar görünürde ve doğru konumda) is (evet)
+  :Görüntüyü işle;
+  if (Aynı renkte birden fazla duba algılandı?) then (evet)
+    :En soldaki kırmızı ve en sağdaki yeşil dubanın arasındaki alanı baz al;
+  else (hayır)
+  :Kırmızı ve yeşil dubanın arasındaki alanı baz al;
+  endif
+    if (Sarı duba algılandı?) then (evet)
+        :Baz alınan alanı sarı dubanın olduğu noktadan ikiye böl ve geniş olan tarafta doğru git;
+    else (hayır)
+    :Baz alınan alana doğru git;
+    endif
+endwhile
+:1. aşamayı bitir;
+stop
+@enduml

@@ -1,0 +1,18 @@
+@startuml main sea
+start
+
+while (Mod değiştir veya yeni bağlantı kur?) is (evet)
+
+if (Yeni bağlantı kur?) then (evet)
+    :Kontrol istasyonuna bağlan;
+    while (Bağlantı kuruldu mu?) is (hayır)
+    endwhile (evet)
+    :Kontrol istasyonuna veri gönderimini başlat;
+else (hayır)
+endif
+
+:Seçili modu başlat (otonom 1-2/manuel);
+endwhile (hayır)
+
+stop
+@enduml
