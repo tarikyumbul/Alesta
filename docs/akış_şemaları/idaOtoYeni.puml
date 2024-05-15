@@ -6,13 +6,8 @@ while (Dubalar tespit edildi mi?) is (hayır)
     if (Dubalar tespit edildi mi?) then (evet)
         :Dur;
     else (hayır)
-        
-    endif
-    if (İlk tarama mı?) then (evet)
-    else (hayır)
         :360 derece tamamlanınca dur ve ilerle;
     endif
-
 endwhile (evet)
     :Dubalara doğru ilerle;
 
