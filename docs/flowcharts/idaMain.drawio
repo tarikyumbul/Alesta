@@ -1,0 +1,114 @@
+<mxfile host="app.diagrams.net" modified="2024-05-16T17:29:25.100Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="s62aJGJ_Q7OLtXmVOxfr" version="24.4.0" type="google">
+  <diagram name="Page-1" id="CztkPJPlUJt0_d5qj9uJ">
+    <mxGraphModel dx="1195" dy="643" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-21" value="Başla" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-43" value="Bitir" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="40" y="670" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5F_ULWZB0FXHzeb16xU3-21" target="5F_ULWZB0FXHzeb16xU3-57">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-20" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-57" value="Kontrol istasyonuna&lt;div&gt;bağlan&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="240" y="520" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="5F_ULWZB0FXHzeb16xU3-60" target="5F_ULWZB0FXHzeb16xU3-60">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="450" y="550" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="510" y="620" />
+              <mxPoint x="430" y="620" />
+              <mxPoint x="430" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-63" value="hayır" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="5F_ULWZB0FXHzeb16xU3-62">
+          <mxGeometry x="-0.41" y="-2" relative="1" as="geometry">
+            <mxPoint y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5F_ULWZB0FXHzeb16xU3-60" target="5F_ULWZB0FXHzeb16xU3-65">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-67" value="evet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="5F_ULWZB0FXHzeb16xU3-66">
+          <mxGeometry x="-0.0926" y="-1" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-60" value="Bağlantı&lt;div&gt;kuruldu&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="460" y="500" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="5F_ULWZB0FXHzeb16xU3-57" target="5F_ULWZB0FXHzeb16xU3-60">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5F_ULWZB0FXHzeb16xU3-65" target="5F_ULWZB0FXHzeb16xU3-70">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-65" value="Kontrol istasyonuna&lt;div&gt;veri gönderimini&lt;/div&gt;&lt;div&gt;başlat&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="640" y="520" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-70" value="Seçili modu başlat&lt;div&gt;(otonom/manuel)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="830" y="520" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5F_ULWZB0FXHzeb16xU3-72" target="5F_ULWZB0FXHzeb16xU3-57">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="550" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="310" y="615" />
+              <mxPoint x="190" y="615" />
+              <mxPoint x="190" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-77" value="evet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="5F_ULWZB0FXHzeb16xU3-76">
+          <mxGeometry x="-0.2778" y="-2" relative="1" as="geometry">
+            <mxPoint x="-7" y="9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-72" value="Bağlantı koptu" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="247.5" y="650" width="125" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="5F_ULWZB0FXHzeb16xU3-72" target="5F_ULWZB0FXHzeb16xU3-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-78" value="hayır" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="5F_ULWZB0FXHzeb16xU3-74">
+          <mxGeometry x="-0.0697" y="-2" relative="1" as="geometry">
+            <mxPoint y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5F_ULWZB0FXHzeb16xU3-79" target="5F_ULWZB0FXHzeb16xU3-70">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="805" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-85" value="evet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="5F_ULWZB0FXHzeb16xU3-83">
+          <mxGeometry x="-0.2453" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-79" value="Mod değiştir&lt;div&gt;(otonom/manuel&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="730" y="650" width="150" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="5F_ULWZB0FXHzeb16xU3-70" target="5F_ULWZB0FXHzeb16xU3-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="5F_ULWZB0FXHzeb16xU3-79" target="5F_ULWZB0FXHzeb16xU3-72">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5F_ULWZB0FXHzeb16xU3-86" value="hayır" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="5F_ULWZB0FXHzeb16xU3-84">
+          <mxGeometry x="-0.0338" y="-1" relative="1" as="geometry">
+            <mxPoint x="-3" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

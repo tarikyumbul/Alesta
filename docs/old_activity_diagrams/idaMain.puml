@@ -11,7 +11,7 @@ if (Yeni bağlantı kur?) then (evet)
 else (hayır)
 endif
 
-:Seçili modu başlat (otonom 1-2/manuel);
+:Seçili modu başlat (otonom/manuel);
 endwhile (hayır)
 
 stop

@@ -1,0 +1,210 @@
+<mxfile host="app.diagrams.net" modified="2024-05-21T13:08:58.334Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="gNEOl7W8kpc7gCSDi_vo" scale="1" border="0" version="24.4.4" type="device">
+  <diagram name="Page-1" id="HiAdrXuOQvfVCZTMaFvd">
+    <mxGraphModel dx="1154" dy="509" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-1" value="Başla" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="100" y="400" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-2" value="Bitir" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="100" y="550" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-1" target="cGLYerJ-1Q7nB14EVuzg-4" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-4" value="Kontrol istasyonundan&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;lokasyon bilgilerini al&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="300" y="400" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-9" target="cGLYerJ-1Q7nB14EVuzg-4" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="510" y="430" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="570" y="360" />
+              <mxPoint x="270" y="360" />
+              <mxPoint x="270" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-6" value="hayır" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="cGLYerJ-1Q7nB14EVuzg-5" vertex="1" connectable="0">
+          <mxGeometry x="-0.41" y="-2" relative="1" as="geometry">
+            <mxPoint x="40" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-9" target="cGLYerJ-1Q7nB14EVuzg-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-8" value="evet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="cGLYerJ-1Q7nB14EVuzg-7" vertex="1" connectable="0">
+          <mxGeometry x="-0.0926" y="-1" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-9" value="Bilgiler&lt;div&gt;geldi mi?&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="520" y="380" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-4" target="cGLYerJ-1Q7nB14EVuzg-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-12" target="cGLYerJ-1Q7nB14EVuzg-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-12" value="10 metre irtifaya çık" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="680" y="400" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-13" target="cGLYerJ-1Q7nB14EVuzg-28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-13" value="Sayının lokasyonuna ilerle" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="890" y="400" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-21" target="cGLYerJ-1Q7nB14EVuzg-33" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-37" value="evet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="cGLYerJ-1Q7nB14EVuzg-35" vertex="1" connectable="0">
+          <mxGeometry x="-0.2052" y="-2" relative="1" as="geometry">
+            <mxPoint y="-6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-21" value="Sayı tespit&lt;div&gt;edildi mi?&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="860" y="530" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-28" value="Görüntüyü işlemeye&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;başla&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="1070" y="480" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-33" value="Sayıyı kontrol istasyonuna ilet" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="680" y="550" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-39" value="Kalkış noktasına geri dön" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="300" y="550" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-39" target="cGLYerJ-1Q7nB14EVuzg-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-42" target="cGLYerJ-1Q7nB14EVuzg-47" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-49" value="evet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="cGLYerJ-1Q7nB14EVuzg-48" vertex="1" connectable="0">
+          <mxGeometry x="-0.4328" y="-2" relative="1" as="geometry">
+            <mxPoint x="1" y="3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-42" value="İlk tespit&amp;nbsp;&lt;div&gt;denemesi&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;mi?&lt;/span&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="875" y="670" width="110" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-21" target="cGLYerJ-1Q7nB14EVuzg-42" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-44" value="hayır" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="cGLYerJ-1Q7nB14EVuzg-43" vertex="1" connectable="0">
+          <mxGeometry x="-0.1224" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-45" target="cGLYerJ-1Q7nB14EVuzg-55" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-59" value="evet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="cGLYerJ-1Q7nB14EVuzg-56" vertex="1" connectable="0">
+          <mxGeometry x="-0.2603" y="1" relative="1" as="geometry">
+            <mxPoint x="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-45" target="cGLYerJ-1Q7nB14EVuzg-60" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-62" value="hayır" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="cGLYerJ-1Q7nB14EVuzg-61" vertex="1" connectable="0">
+          <mxGeometry x="-0.0563" y="-1" relative="1" as="geometry">
+            <mxPoint y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-45" value="İkinci tespit&lt;div&gt;denemesi mi?&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="695" y="670" width="110" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-47" value="İrtifayı 5 metreye ayarla" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="860" y="810" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-47" target="cGLYerJ-1Q7nB14EVuzg-21" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="840" />
+              <mxPoint x="1030" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-42" target="cGLYerJ-1Q7nB14EVuzg-45" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-53" value="hayır" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="cGLYerJ-1Q7nB14EVuzg-51" vertex="1" connectable="0">
+          <mxGeometry x="-0.0672" relative="1" as="geometry">
+            <mxPoint x="1" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-55" value="İrtifayı 15 metreye ayarla" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="680" y="810" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-55" target="cGLYerJ-1Q7nB14EVuzg-21" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="900" />
+              <mxPoint x="1030" y="900" />
+              <mxPoint x="1030" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-60" target="cGLYerJ-1Q7nB14EVuzg-63" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-60" value="İrtifayı 10 metreye ayarla ve İDA&#39;nın yatay konumuna 10 metre yaklaş" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="480" y="690" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-63" value="Sayının konumuna doğru ilerle" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="480" y="810" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-63" target="cGLYerJ-1Q7nB14EVuzg-21" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="900" />
+              <mxPoint x="1030" y="900" />
+              <mxPoint x="1030" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-28" target="cGLYerJ-1Q7nB14EVuzg-21" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1140" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-68" target="cGLYerJ-1Q7nB14EVuzg-39" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-73" value="evet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="cGLYerJ-1Q7nB14EVuzg-72" vertex="1" connectable="0">
+          <mxGeometry x="-0.1458" relative="1" as="geometry">
+            <mxPoint y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-68" target="cGLYerJ-1Q7nB14EVuzg-33" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="570" y="650" />
+              <mxPoint x="840" y="650" />
+              <mxPoint x="840" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bnYPMkGLzAY2pIPu-DyM-1" value="hayır" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="cGLYerJ-1Q7nB14EVuzg-75" vertex="1" connectable="0">
+          <mxGeometry x="-0.549" y="2" relative="1" as="geometry">
+            <mxPoint x="15" y="-6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-68" value="İletildi bilgisi&lt;div&gt;geldi mi?&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="520" y="530" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="cGLYerJ-1Q7nB14EVuzg-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="cGLYerJ-1Q7nB14EVuzg-33" target="cGLYerJ-1Q7nB14EVuzg-68" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,110 @@
+<mxfile host="app.diagrams.net" modified="2024-05-21T11:20:03.507Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="q-wF2cRW9_x9gucJ5aCf" scale="1" border="0" version="24.4.4" type="device">
+  <diagram name="Page-1" id="otVqRoIaQSpOapDgH4C0">
+    <mxGraphModel dx="1154" dy="509" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="skU3akY0U7ozxVcOEHmx-3" value="Başla" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="100" y="400" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-4" value="Bitir" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="100" y="550" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="skU3akY0U7ozxVcOEHmx-3" target="skU3akY0U7ozxVcOEHmx-6" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-6" value="Kontrol istasyonuna&lt;div&gt;bağlan&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="300" y="400" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="skU3akY0U7ozxVcOEHmx-11" target="skU3akY0U7ozxVcOEHmx-6" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="510" y="430" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="570" y="360" />
+              <mxPoint x="280" y="360" />
+              <mxPoint x="280" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-8" value="hayır" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="skU3akY0U7ozxVcOEHmx-7" vertex="1" connectable="0">
+          <mxGeometry x="-0.41" y="-2" relative="1" as="geometry">
+            <mxPoint x="8" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="skU3akY0U7ozxVcOEHmx-11" target="skU3akY0U7ozxVcOEHmx-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-10" value="evet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="skU3akY0U7ozxVcOEHmx-9" vertex="1" connectable="0">
+          <mxGeometry x="-0.0926" y="-1" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-11" value="Bağlantı&lt;div&gt;kuruldu mu?&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="520" y="380" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="skU3akY0U7ozxVcOEHmx-6" target="skU3akY0U7ozxVcOEHmx-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="skU3akY0U7ozxVcOEHmx-14" target="skU3akY0U7ozxVcOEHmx-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-14" value="Kontrol istasyonuna&lt;div&gt;veri gönderimini&lt;/div&gt;&lt;div&gt;başlat&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="680" y="400" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-15" value="Seçili modu başlat&lt;div&gt;(otonom/manuel/acil)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="890" y="400" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="skU3akY0U7ozxVcOEHmx-18" target="skU3akY0U7ozxVcOEHmx-6" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="430" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="370" y="495" />
+              <mxPoint x="250" y="495" />
+              <mxPoint x="250" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-17" value="evet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="skU3akY0U7ozxVcOEHmx-16" vertex="1" connectable="0">
+          <mxGeometry x="-0.2778" y="-2" relative="1" as="geometry">
+            <mxPoint x="-7" y="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-18" value="Bağlantı&lt;div&gt;koptu&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;mu?&lt;/span&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="318.75" y="530" width="102.5" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="skU3akY0U7ozxVcOEHmx-18" target="skU3akY0U7ozxVcOEHmx-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-20" value="hayır" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="skU3akY0U7ozxVcOEHmx-19" vertex="1" connectable="0">
+          <mxGeometry x="-0.0697" y="-2" relative="1" as="geometry">
+            <mxPoint y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="skU3akY0U7ozxVcOEHmx-23" target="skU3akY0U7ozxVcOEHmx-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-28" value="evet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="skU3akY0U7ozxVcOEHmx-27" vertex="1" connectable="0">
+          <mxGeometry x="-0.4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-23" value="Mod değiştirilsin mi?&lt;div&gt;(otonom/manuel/acil&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="760" y="530" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="skU3akY0U7ozxVcOEHmx-15" target="skU3akY0U7ozxVcOEHmx-23" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="skU3akY0U7ozxVcOEHmx-23" target="skU3akY0U7ozxVcOEHmx-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="skU3akY0U7ozxVcOEHmx-26" value="hayır" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="skU3akY0U7ozxVcOEHmx-25" vertex="1" connectable="0">
+          <mxGeometry x="-0.0338" y="-1" relative="1" as="geometry">
+            <mxPoint x="-3" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
