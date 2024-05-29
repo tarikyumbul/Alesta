@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # Load input image
-input_image = cv2.imread('Color_icon_red.png')
+input_image = cv2.imread('src/color_detection/input_images/3.jpg')
 
 # Create a copy of the original image for result
 result = input_image.copy()
