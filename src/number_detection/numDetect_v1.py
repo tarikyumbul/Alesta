@@ -18,7 +18,7 @@ def draw_boxes(image, bounds, color=(0, 255, 255), width=2):
 
 
 # Load image
-input_image = cv2.imread('src/number_detection/input_images/2.jpg')
+input_image = cv2.imread('src/number_detection/input_images/Screenshot_1.png')
 
 # Initialize EasyOCR reader
 reader = easyocr.Reader(['en'])
