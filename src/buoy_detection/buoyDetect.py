@@ -34,6 +34,8 @@ def create_combined_mask(frame_hsv, colors):
     # uint8 = unsigned 8-bit integer => array, renk değer aralığı olan 0-255 arası değerleri tutabilir
     combined_mask = np.zeros(frame_hsv.shape[:2], dtype="uint8")
     for color in colors:
+        if color not in color_ranges:
+            raise ValueError(f"Yanlış renk girdisi. Desteklenen girdiler: {list(color_ranges.keys())}")
         lower1 = color_ranges[color]["lower1"]
         upper1 = color_ranges[color]["upper1"]
         lower2 = color_ranges[color]["lower2"]
