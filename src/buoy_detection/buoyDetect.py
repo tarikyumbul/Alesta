@@ -141,6 +141,8 @@ while True:
             commands.append("Sağa dön")
         elif detected_colors == {"green"}:
             commands.append("Sola dön")
+        elif detected_colors == {"yellow"}:
+            commands.append("İleri git")
         else:
             # Her 2 ardışık farklı renkteki dubanın arasındaki mesafeyi hesapla
             if len(filtered_buoys) > 1:
