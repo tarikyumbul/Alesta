@@ -1,5 +1,7 @@
 import cv2
 import numpy as np
+import time
+from collections import defaultdict, Counter
 
 # Kamerayı aç. Seçilmek istenen kameraya göre değer "0", "1", "2" vs. olabilir
 cap = cv2.VideoCapture(0)
@@ -50,6 +52,13 @@ def create_combined_mask(frame_hsv, colors):
         combined_mask = cv2.bitwise_or(combined_mask, full_mask)
 
     return combined_mask
+
+# Initialize variables for averaging print statements over 1 second
+start_time = time.time()
+coordinate_data = []
+distance_data = []
+commands = []
+turn_data = []
 
 while True:
     # Görüntüyü karelere ayır
@@ -118,15 +127,21 @@ while True:
         # Filtrelenmiş dubaları görüntüle
         for (x, y, radius, color) in filtered_buoys:
             cv2.circle(result, (x, y), radius, (0, 255, 0), 2)
+            # Dubaların rengini belirt
+            if color == "red":
+                cv2.putText(result, "Kirmizi Duba", (x - radius, y - radius - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+            elif color == "green":
+                cv2.putText(result, "Yesil Duba", (x - radius, y - radius - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+            elif color == "yellow":
+                cv2.putText(result, "Sari Duba", (x - radius, y - radius - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 2)
 
         # Eğer sadece 1 kırmızı veya yeşil duba tespit edildiyse sağa veya sola dön
         detected_colors = set(buoy[3] for buoy in filtered_buoys)
         if detected_colors == {"red"}:
-            print("Sağa dön")
+            commands.append("Sağa dön")
         elif detected_colors == {"green"}:
-            print("Sola dön")
+            commands.append("Sola dön")
         else:
-
             # Her 2 ardışık farklı renkteki dubanın arasındaki mesafeyi hesapla
             if len(filtered_buoys) > 1:
                 # Dubaları x düzlemine göre sırala
@@ -149,14 +164,14 @@ while True:
                     center_y = (y1 + y2) // 2
                     cv2.line(result, (x1, y1), (x2, y2), (255, 0, 0), 2)
                     cv2.circle(result, (center_x, center_y), 5, (0, 0, 255), -1)
-                    print(f"Hedef nokta: ({center_x}, {center_y})")
+                    coordinate_data.append((center_x, center_y))
 
                     # Görüntünün merkezi ile hedef nokta arasındaki mesafeyi hesapla
                     frame_center_x = frame.shape[1] // 2
                     frame_center_y = frame.shape[0] // 2
                     distance_to_center = center_x - frame_center_x
                     vertical_distance = center_y - frame_center_y
-                    print(f"Hedef nokta ve görüntünün merkezi arasındaki mesafe (yatay düzlemde): {abs(distance_to_center)} piksel")
+                    distance_data.append(distance_to_center)
 
                     # Gereken dönüş yüzdesini hesapla
                     frame_width = frame.shape[1]
@@ -165,11 +180,11 @@ while True:
                     # Sonraki manevrayı belirle
                     if abs(distance_to_center) > 30:  # Yön direktif kalibrasyonu yapılabilir
                         if distance_to_center > 0:
-                            print(f"Sonraki manevra: Sağa dön ({turn_percentage:.2f}%)")
+                            turn_data.append(f"Sonraki manevra: Sağa dön %({turn_percentage:.2f})")
                         else:
-                            print(f"Sonraki manevra: Sola dön ({turn_percentage:.2f}%)")
+                            turn_data.append(f"Sonraki manevra: Sola dön %({turn_percentage:.2f})")
                     else:
-                            print("Sonraki manevra: İleri git")
+                        turn_data.append("Sonraki manevra: İleri git")
 
     # Maskeyi ve işlenmiş görüntüyü girdi görüntünün boyutuna getir
     full_mask_colored = cv2.cvtColor(combined_mask, cv2.COLOR_GRAY2BGR)
@@ -185,6 +200,36 @@ while True:
     # Eğer "q" tuşuna basılırsa işlemi durdur
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
+    # Her 1 saniyede bir ortalama koordinatları, mesafeleri ve komutları yazdır
+    if time.time() - start_time >= 1:
+        # Ortalama koordinatlar
+        if coordinate_data and not commands:
+            avg_x = sum(x for x, y in coordinate_data) // len(coordinate_data)
+            avg_y = sum(y for x, y in coordinate_data) // len(coordinate_data)
+            print(f"Hedef nokta: ({avg_x}, {avg_y})")
+
+        # Merkez ve hedef arasındaki ortalama mesafe
+        if distance_data and not commands:
+            avg_distance = sum(distance_data) // len(distance_data)
+            print(f"Hedef nokta ve görüntünün merkezi arasındaki yatay mesafe: {abs(avg_distance)} piksel")
+
+        # En çok tekrar eden direktif (Sadece 1 kırmızı veya yeşil duba tespit edildiyse)
+        if commands:
+            most_common_command = Counter(commands).most_common(1)[0][0]
+            print(most_common_command)
+
+        # En çok tekrar eden dönüş direktifi (2 farklı renkte duba tespit edildiyse)
+        if turn_data and not commands:
+            most_common_turn = Counter(turn_data).most_common(1)[0][0]
+            print(most_common_turn)
+
+        # Değişkenleri sıfırla
+        start_time = time.time()
+        coordinate_data.clear()
+        distance_data.clear()
+        commands.clear()
+        turn_data.clear()
 
 # Kamerayı kapat
 cap.release()
