@@ -10,7 +10,7 @@ color_to_detect = "all"  # Seçenekler: "red", "green", "yellow", "all"
 color_ranges = {
     "red": {
         "lower1": np.array([0, 120, 100]),
-        "upper1": np.array([5, 255, 255]),
+        "upper1": np.array([10, 255, 255]),
         "lower2": np.array([175, 120, 100]),
         "upper2": np.array([180, 255, 255])
     },
@@ -93,7 +93,7 @@ while True:
             circularity = 4 * np.pi * cv2.contourArea(contour) / (perimeter ** 2)
             
             # Sadece yeterince oval olan objeleri kabul et
-            if 0.7 < circularity < 1.3 and radius > 10:  # Bu ayarları kalibre edebiliriz
+            if 0.2 < circularity < 1.3 and radius > 10:  # Ovallik kalibrasyonu yapılabilir
                 # Dubanın rengini kontrol et
                 mask = np.zeros(frame_hsv.shape[:2], dtype="uint8")
                 cv2.drawContours(mask, [contour], -1, 255, -1)
@@ -119,29 +119,57 @@ while True:
         for (x, y, radius, color) in filtered_buoys:
             cv2.circle(result, (x, y), radius, (0, 255, 0), 2)
 
-        # Her 2 ardışık farklı renkteki dubanın arasındaki mesafeyi hesapla
-        if len(filtered_buoys) > 1:
-            # Dubaları x düzlemine göre sırala
-            filtered_buoys.sort(key=lambda buoy: buoy[0])
-            
-            max_distance = 0
-            max_pair = None
-            for (x1, y1, r1, color1), (x2, y2, r2, color2) in zip(filtered_buoys, filtered_buoys[1:]):
-                if color1 != color2:
-                    # Dubaların birbirine bakan kenarları arasındaki mesafeyi hesapla
-                    edge_distance = np.sqrt(((x1 + r1) - (x2 - r2)) ** 2 + (y1 - y2) ** 2)
-                    # Arasındaki mesafe en uzun olan duba çiftini bul
-                    if edge_distance > max_distance:
-                        max_distance = edge_distance
-                        max_pair = ((x1 + r1, y1), (x2 - r2, y2))
-            # Eğer bulunmuş bir en uzun mesafe varsa, görüntüye işle ve konsolda yazdır
-            if max_pair:
-                (x1, y1), (x2, y2) = max_pair
-                center_x = (x1 + x2) // 2
-                center_y = (y1 + y2) // 2
-                cv2.line(result, (x1, y1), (x2, y2), (255, 0, 0), 2)
-                cv2.circle(result, (center_x, center_y), 5, (0, 0, 255), -1)
-                print(f"Longest distance center: ({center_x}, {center_y})")
+        # Eğer sadece 1 kırmızı veya yeşil duba tespit edildiyse sağa veya sola dön
+        detected_colors = set(buoy[3] for buoy in filtered_buoys)
+        if detected_colors == {"red"}:
+            print("Sağa dön")
+        elif detected_colors == {"green"}:
+            print("Sola dön")
+        else:
+
+            # Her 2 ardışık farklı renkteki dubanın arasındaki mesafeyi hesapla
+            if len(filtered_buoys) > 1:
+                # Dubaları x düzlemine göre sırala
+                filtered_buoys.sort(key=lambda buoy: buoy[0])
+                
+                max_distance = 0
+                max_pair = None
+                for (x1, y1, r1, color1), (x2, y2, r2, color2) in zip(filtered_buoys, filtered_buoys[1:]):
+                    if color1 != color2:
+                        # Dubaların birbirine bakan kenarları arasındaki mesafeyi hesapla
+                        edge_distance = np.sqrt(((x1 + r1) - (x2 - r2)) ** 2 + (y1 - y2) ** 2)
+                        # Arasındaki mesafe en uzun olan duba çiftini bul
+                        if edge_distance > max_distance:
+                            max_distance = edge_distance
+                            max_pair = ((x1 + r1, y1), (x2 - r2, y2))
+                # Eğer bulunmuş bir en uzun mesafe varsa, görüntüye işle ve konsolda yazdır
+                if max_pair:
+                    (x1, y1), (x2, y2) = max_pair
+                    center_x = (x1 + x2) // 2
+                    center_y = (y1 + y2) // 2
+                    cv2.line(result, (x1, y1), (x2, y2), (255, 0, 0), 2)
+                    cv2.circle(result, (center_x, center_y), 5, (0, 0, 255), -1)
+                    print(f"Hedef nokta: ({center_x}, {center_y})")
+
+                    # Görüntünün merkezi ile hedef nokta arasındaki mesafeyi hesapla
+                    frame_center_x = frame.shape[1] // 2
+                    frame_center_y = frame.shape[0] // 2
+                    distance_to_center = center_x - frame_center_x
+                    vertical_distance = center_y - frame_center_y
+                    print(f"Hedef nokta ve görüntünün merkezi arasındaki mesafe (yatay düzlemde): {abs(distance_to_center)} piksel")
+
+                    # Gereken dönüş yüzdesini hesapla
+                    frame_width = frame.shape[1]
+                    turn_percentage = abs(distance_to_center) / (frame_width / 2) * 100
+
+                    # Sonraki manevrayı belirle
+                    if abs(distance_to_center) > 30:  # Yön direktif kalibrasyonu yapılabilir
+                        if distance_to_center > 0:
+                            print(f"Sonraki manevra: Sağa dön ({turn_percentage:.2f}%)")
+                        else:
+                            print(f"Sonraki manevra: Sola dön ({turn_percentage:.2f}%)")
+                    else:
+                            print("Sonraki manevra: İleri git")
 
     # Maskeyi ve işlenmiş görüntüyü girdi görüntünün boyutuna getir
     full_mask_colored = cv2.cvtColor(combined_mask, cv2.COLOR_GRAY2BGR)
@@ -152,7 +180,7 @@ while True:
     stacked_images = np.hstack((frame, full_mask_resized, result_resized))
 
     # Birleştirilmiş görüntüleri görüntüle
-    cv2.imshow('Buoy Detection', cv2.resize(stacked_images, None, fx=0.8, fy=0.8))
+    cv2.imshow('Duba Tespiti', cv2.resize(stacked_images, None, fx=0.8, fy=0.8))
 
     # Eğer "q" tuşuna basılırsa işlemi durdur
     if cv2.waitKey(1) & 0xFF == ord('q'):
