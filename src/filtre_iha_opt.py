@@ -1,3 +1,4 @@
+import torch
 import cv2
 import numpy as np
 import easyocr
@@ -5,6 +6,9 @@ import time
 
 # EasyOCR okuyucuyu başlat
 reader = easyocr.Reader(['en'], gpu=False)
+
+# Eğer güvenlik uyarısı almak istemiyorsanız torch.load fonksiyonunu güvenli hale getirebilirsiniz:
+# net.load_state_dict(torch.load(trained_model, map_location=device, weights_only=True))
 
 # Kamerayı başlat
 cap = cv2.VideoCapture(0)
@@ -46,40 +50,31 @@ while True:
             try:
                 x, y, w, h = cv2.boundingRect(contour)
 
-                # Boyut filtrelerini optimize edelim, daha küçük dikdörtgenleri de dahil edelim
                 if w < 5 or h < 5 or w > 800 or h > 800:
                     continue
 
-                # Dikdörtgenin içindeki alanı al
                 roi = frame[y:y+h, x:x+w]
 
-                # Küçük dikdörtgenlerdeki detayları belirginleştirmek için yeniden boyutlandırma
                 scale_factor = max(2, int(400 / max(w, h)))  # Küçük dikdörtgenleri büyütmek için dinamik ölçek
                 roi_resized = cv2.resize(roi, None, fx=scale_factor, fy=scale_factor, interpolation=cv2.INTER_LINEAR)
                 roi_dilated = cv2.dilate(roi_resized, kernel, iterations=1)
 
-                # EasyOCR ile metni oku ve detayları al
-                results = reader.readtext(roi_dilated, detail=0)  # 'detail=0' ile sadece metin çıktısını alıyoruz
+                results = reader.readtext(roi_dilated, detail=0)
 
-                # Sonuçları işle
                 for text in results:
                     text = text.replace(" ", "")
                     if len(text) == 1 and text in ['1', '2', '3']:  # Tek karakterli ve istenilen rakamsa
                         detected_numbers.append(text)
                         positions[text] = (x, y)
-                        # Karakter için bir dikdörtgen çiz
                         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-                        # Rakamı dikdörtgenin üstüne yaz
                         cv2.putText(frame, text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 255), 2)
 
             except Exception as e:
                 continue
 
-        # Eğer 3 rakam birden tespit edilirse sadece OK çıktısı ver
         if len(set(detected_numbers)) == 3 and all(num in detected_numbers for num in ['1', '2', '3']):
             print("OK")
         else:
-            # Eğer tespit edilen rakam sayısı 3'ten azsa NOK çıktısı ver ve SG/SL, U/D kontrolü yap
             if detected_numbers:
                 avg_x_position = np.mean([positions[num][0] for num in detected_numbers])
                 avg_y_position = np.mean([positions[num][1] for num in detected_numbers])
@@ -93,13 +88,10 @@ while True:
             else:
                 print("NOK")
 
-    # İşlenmiş kareyi göster
     cv2.imshow('Detected Numbers', frame)
 
-    # 'q' tuşuna basıldığında döngüyü sonlandır
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# Kamerayı serbest bırak ve pencereleri kapat
 cap.release()
 cv2.destroyAllWindows()
