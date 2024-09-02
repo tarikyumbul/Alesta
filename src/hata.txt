@@ -1,5 +1,20 @@
+EasyOCR okuyucu başlatılıyor...
 Using CPU. Note: This module is much faster with a GPU.
-/home/ihamarmara/.local/lib/python3.11/site-packages/easyocr/detection.py:78: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
-  net.load_state_dict(copyStateDict(torch.load(trained_model, map_location=device)))
-/home/ihamarmara/.local/lib/python3.11/site-packages/easyocr/recognition.py:169: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
-  state_dict = torch.load(model_path, map_location=device)
+EasyOCR okuyucu başlatıldı.
+Kamera başlatılıyor...
+[1:05:07.550931262] [3864]  INFO Camera camera_manager.cpp:313 libcamera v0.3.0+65-6ddd79b5
+[1:05:07.559098779] [3873]  INFO RPI pisp.cpp:695 libpisp version v1.0.6 b567f0455680 17-06-2024 (10:20:00)
+[1:05:07.569979795] [3873]  INFO RPI pisp.cpp:1154 Registered camera /base/axi/pcie@120000/rp1/i2c@88000/imx708@1a to CFE device /dev/media0 and ISP device /dev/media2 using PiSP variant BCM2712_C0
+[1:05:07.571954495] [3864]  INFO Camera camera_manager.cpp:313 libcamera v0.3.0+65-6ddd79b5
+[1:05:07.583301112] [3876]  INFO RPI pisp.cpp:695 libpisp version v1.0.6 b567f0455680 17-06-2024 (10:20:00)
+[1:05:07.596476710] [3876]  INFO RPI pisp.cpp:1154 Registered camera /base/axi/pcie@120000/rp1/i2c@88000/imx708@1a to CFE device /dev/media0 and ISP device /dev/media2 using PiSP variant BCM2712_C0
+[1:05:07.599485462] [3864]  WARN V4L2 v4l2_pixelformat.cpp:344 Unsupported V4L2 pixel format RPBP
+[1:05:07.600410721] [3864]  INFO Camera camera.cpp:1183 configuring streams: (0) 320x240-XRGB8888 (1) 1536x864-BGGR_PISP_COMP1
+[1:05:07.600571144] [3876]  INFO RPI pisp.cpp:1450 Sensor: /base/axi/pcie@120000/rp1/i2c@88000/imx708@1a - Selected sensor format: 1536x864-SBGGR10_1X10 - Selected CFE format: 1536x864-PC1B
+Kamera başlatıldı.
+Kamera görüntüsü alınıyor...
+Görüntü alındı.
+Traceback (most recent call last):
+  File "/home/ihamarmara/Desktop/OD_test/filtre_iha_opt.py", line 115, in <module>
+    cv2.imshow('Detected Numbers', frame)
+cv2.error: OpenCV(4.10.0) /io/opencv/modules/highgui/src/window.cpp:1301: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
