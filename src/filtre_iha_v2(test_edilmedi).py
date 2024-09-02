@@ -16,7 +16,7 @@ print("EasyOCR okuyucu başlatıldı.")
 # Picamera2 ile kamera başlatma
 print("Kamera başlatılıyor...")
 picam2 = Picamera2()
-config = picam2.create_preview_configuration(main={"format": "XRGB8888", "size": (320, 240)})
+config = picam2.create_preview_configuration(main={"format": "RGB888", "size": (320, 240)})
 picam2.configure(config)
 picam2.start()
 print("Kamera başlatıldı.")
@@ -110,12 +110,12 @@ while True:
                     print("NOK")
 
         except Exception as e:
-            print(f"OCR işlemi sırasında hata: {e}")
+          print(f"OCR işlemi sırasında hata: {e}")
 
     cv2.imshow('Detected Numbers', frame)
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+  #  if cv2.waitKey(1) & 0xFF == ord('q'):
+   #     break
 
-picam2.stop()
-cv2.destroyAllWindows()
+#picam2.stop()
+#cv2.destroyAllWindows()
