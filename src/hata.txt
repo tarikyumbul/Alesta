@@ -3,15 +3,14 @@ EasyOCR okuyucu başlatılıyor...
 Using CPU. Note: This module is much faster with a GPU.
 EasyOCR okuyucu başlatıldı.
 Kamera başlatılıyor...
-[1:38:02.664324946] [5191]  INFO Camera camera_manager.cpp:313 libcamera v0.3.0+65-6ddd79b5
-[1:38:02.672528330] [5200]  INFO RPI pisp.cpp:695 libpisp version v1.0.6 b567f0455680 17-06-2024 (10:20:00)
-[1:38:02.683459280] [5200]  INFO RPI pisp.cpp:1154 Registered camera /base/axi/pcie@120000/rp1/i2c@88000/imx708@1a to CFE device /dev/media0 and ISP device /dev/media2 using PiSP variant BCM2712_C0
-[1:38:02.685106312] [5191]  INFO Camera camera_manager.cpp:313 libcamera v0.3.0+65-6ddd79b5
-[1:38:02.695499375] [5203]  INFO RPI pisp.cpp:695 libpisp version v1.0.6 b567f0455680 17-06-2024 (10:20:00)
-[1:38:02.707588229] [5203]  INFO RPI pisp.cpp:1154 Registered camera /base/axi/pcie@120000/rp1/i2c@88000/imx708@1a to CFE device /dev/media0 and ISP device /dev/media2 using PiSP variant BCM2712_C0
-[1:38:02.710069925] [5191]  WARN V4L2 v4l2_pixelformat.cpp:344 Unsupported V4L2 pixel format RPBP
-[1:38:02.710896997] [5191]  INFO Camera camera.cpp:1183 configuring streams: (0) 320x240-XRGB8888 (1) 1536x864-BGGR_PISP_COMP1
-[1:38:02.711054774] [5203]  INFO RPI pisp.cpp:1450 Sensor: /base/axi/pcie@120000/rp1/i2c@88000/imx708@1a - Selected sensor format: 1536x864-SBGGR10_1X10 - Selected CFE format: 1536x864-PC1B
+[0:01:35.285207944] [3023]  INFO Camera camera_manager.cpp:313 libcamera v0.3.0+65-6ddd79b5
+[0:01:35.292742968] [3032]  INFO RPI pisp.cpp:695 libpisp version v1.0.6 b567f0455680 17-06-2024 (10:20:00)
+[0:01:35.302840802] [3032]  INFO RPI pisp.cpp:1154 Registered camera /base/axi/pcie@120000/rp1/i2c@88000/imx708@1a to CFE device /dev/media0 and ISP device /dev/media2 using PiSP variant BCM2712_C0
+[0:01:35.304338596] [3023]  INFO Camera camera_manager.cpp:313 libcamera v0.3.0+65-6ddd79b5
+[0:01:35.312130355] [3035]  INFO RPI pisp.cpp:695 libpisp version v1.0.6 b567f0455680 17-06-2024 (10:20:00)
+[0:01:35.324380379] [3035]  INFO RPI pisp.cpp:1154 Registered camera /base/axi/pcie@120000/rp1/i2c@88000/imx708@1a to CFE device /dev/media0 and ISP device /dev/media2 using PiSP variant BCM2712_C0
+[0:01:35.328387521] [3023]  INFO Camera camera.cpp:1183 configuring streams: (0) 320x240-RGB888 (1) 1536x864-BGGR_PISP_COMP1
+[0:01:35.328618377] [3035]  INFO RPI pisp.cpp:1450 Sensor: /base/axi/pcie@120000/rp1/i2c@88000/imx708@1a - Selected sensor format: 1536x864-SBGGR10_1X10 - Selected CFE format: 1536x864-PC1B
 Kamera başlatıldı.
 Kamera görüntüsü alınıyor...
 Görüntü alındı.
