@@ -1,97 +1,114 @@
-import torch
-import cv2
 import numpy as np
 import easyocr
 import time
+import warnings
+from picamera2 import Picamera2
+import cv2
 
-# EasyOCR okuyucuyu başlat
+print(cv2.__version__)
+# FutureWarning uyarısını bastır
+warnings.filterwarnings("ignore", category=FutureWarning)
+
 reader = easyocr.Reader(['en'], gpu=False)
 
-# Eğer güvenlik uyarısı almak istemiyorsanız torch.load fonksiyonunu güvenli hale getirebilirsiniz:
-# net.load_state_dict(torch.load(trained_model, map_location=device, weights_only=True))
-
-# Kamerayı başlat
-cap = cv2.VideoCapture(0)
+# Picamera2 ile kamera başlatma
+picam2 = Picamera2()
+config = picam2.create_preview_configuration(main={"format": "RGB888", "size": (320, 240)})
+picam2.configure(config)
+picam2.start()
 
 # Kernel tanımlaması
 kernel = np.ones((3, 3), np.uint8)
 
 last_checked_time = time.time()
-
-# Görüntü çözünürlüğünü düşürerek işlem yükünü azaltma
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
+last_frame_time = time.time()  # İlk kare zamanını tanımla
+fps = 0  # Başlangıç FPS değeri
 
 while True:
-    ret, frame = cap.read()
-    if not ret:
+
+    current_time = time.time()
+    
+    # Her kare için geçen zamanı hesapla
+    frame_time_diff = current_time - last_frame_time
+    last_frame_time = current_time
+    
+    if frame_time_diff > 0:  # Sıfırdan büyükse FPS'yi hesapla
+        fps = 1.0 / frame_time_diff
+
+    frame = picam2.capture_array()
+    if frame is None:
         break
 
-    # Her 5 saniyede bir işlemi gerçekleştirmek için kontrol
-    if time.time() - last_checked_time >= 5:
+    # Anlık FPS değerini ekrana yazdır
+    print(f"Anlık FPS: {fps:.2f}")
+    
+    # Her 7 saniyede bir işlemi gerçekleştirmek için kontrol
+    if time.time() - last_checked_time >= 7:
         last_checked_time = time.time()
 
-        # Görüntüyü gri tonlamalıya çevir
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        try:
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+            _, thresh = cv2.threshold(blurred, 180, 255, cv2.THRESH_BINARY)
+            contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            print(f"{len(contours)} kontur bulundu.")
 
-        # Gürültüyü azaltmak için GaussianBlur uygulayalım
-        blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+            detected_numbers = []
+            positions = {}
 
-        # Beyaz dikdörtgenleri bulmak için threshold uygulayın
-        _, thresh = cv2.threshold(blurred, 180, 255, cv2.THRESH_BINARY)
+            for contour in contours:
+                try:
+                    
+                    x, y, w, h = cv2.boundingRect(contour)
+                    print(f"Dikdörtgen bulundu: x={x}, y={y}, w={w}, h={h}")
 
-        # Konturları bulun
-        contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+                    if w < 5 or h < 5 or w > 800 or h > 800:
+                        print("Dikdörtgen boyutu uygun değil, atlanıyor...")
+                        continue
 
-        detected_numbers = []
-        positions = {}
+                    roi = frame[y:y+h, x:x+w]
+                    
 
-        for contour in contours:
-            try:
-                x, y, w, h = cv2.boundingRect(contour)
+                    scale_factor = max(2, int(400 / max(w, h)))  # Küçük dikdörtgenleri büyütmek için dinamik ölçek
+                    roi_resized = cv2.resize(roi, None, fx=scale_factor, fy=scale_factor, interpolation=cv2.INTER_LINEAR)
+                    roi_dilated = cv2.dilate(roi_resized, kernel, iterations=1)
+                    
 
-                if w < 5 or h < 5 or w > 800 or h > 800:
+                    
+                    results = reader.readtext(roi_dilated, detail=0)
+                   
+
+                    for text in results:
+                        text = text.replace(" ", "")
+                        if len(text) == 1 and text in ['1', '2', '3']:  # Tek karakterli ve istenilen rakamsa
+                            detected_numbers.append(text)
+                            positions[text] = (x, y)
+                            print(f"Rakam tespit edildi: {text}")
+                            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                            cv2.putText(frame, text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 255), 2)
+
+                except Exception as e:
+                    print(f"Contour işlemi sırasında hata: {e}")
                     continue
 
-                roi = frame[y:y+h, x:x+w]
-
-                scale_factor = max(2, int(400 / max(w, h)))  # Küçük dikdörtgenleri büyütmek için dinamik ölçek
-                roi_resized = cv2.resize(roi, None, fx=scale_factor, fy=scale_factor, interpolation=cv2.INTER_LINEAR)
-                roi_dilated = cv2.dilate(roi_resized, kernel, iterations=1)
-
-                results = reader.readtext(roi_dilated, detail=0)
-
-                for text in results:
-                    text = text.replace(" ", "")
-                    if len(text) == 1 and text in ['1', '2', '3']:  # Tek karakterli ve istenilen rakamsa
-                        detected_numbers.append(text)
-                        positions[text] = (x, y)
-                        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-                        cv2.putText(frame, text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 255), 2)
-
-            except Exception as e:
-                continue
-
-        if len(set(detected_numbers)) == 3 and all(num in detected_numbers for num in ['1', '2', '3']):
-            print("OK")
-        else:
-            if detected_numbers:
-                avg_x_position = np.mean([positions[num][0] for num in detected_numbers])
-                avg_y_position = np.mean([positions[num][1] for num in detected_numbers])
-
-                direction = "U" if avg_y_position < frame.shape[0] // 2 else "D"
-
-                if avg_x_position > frame.shape[1] // 2:
-                    print(f"NOK {direction} SG")
-                else:
-                    print(f"NOK {direction} SL")
+            if len(set(detected_numbers)) == 3 and all(num in detected_numbers for num in ['1', '2', '3']):
+                print("OK")
             else:
-                print("NOK")
+                if detected_numbers:
+                    avg_x_position = np.mean([positions[num][0] for num in detected_numbers])
+                    avg_y_position = np.mean([positions[num][1] for num in detected_numbers])
 
-    cv2.imshow('Detected Numbers', frame)
+                    direction = "U" if avg_y_position < frame.shape[0] // 2 else "D"
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+                    if avg_x_position > frame.shape[1] // 2:
+                        print(f"NOK {direction} SG")
+                    else:
+                        print(f"NOK {direction} SL")
+                else:
+                    print("NOK")
 
-cap.release()
-cv2.destroyAllWindows()
+        except Exception as e:
+            print(f"OCR işlemi sırasında hata: {e}")
+
+    cv2.imwrite('detected_numbers_output.jpg', frame)
+    print("Resim dosyaya kaydedildi.")
