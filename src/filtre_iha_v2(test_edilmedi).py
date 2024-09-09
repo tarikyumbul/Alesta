@@ -18,13 +18,13 @@ picam2.configure(config)
 picam2.start()
 
 # Kernel tanımlaması (morfolojik işlemler için)
-kernel = np.ones((3, 3), np.uint8)
+kernel = np.ones((5, 5), np.uint8)  # Kernel boyutunu büyüttüm
 
 # A4'e uygun dikdörtgen sınırları
 A4_min_width = 50  
 A4_min_height = 70  
-A4_max_width = 300  
-A4_max_height = 420  
+A4_max_width = 400  # Resimdeki rakamlar büyük olduğu için sınırı biraz arttırdım
+A4_max_height = 500  
 
 last_checked_time = time.time()
 last_frame_time = time.time()  
@@ -54,11 +54,11 @@ while True:
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             
             # Kontrast artırma (CLAHE kullanımı)
-            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
+            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
             gray = clahe.apply(gray)
 
             # Gürültü azaltma (GaussianBlur)
-            blurred = cv2.GaussianBlur(gray, (3, 3), 0)
+            blurred = cv2.GaussianBlur(gray, (5, 5), 0)  # Biraz daha güçlü blur işlemi
             
             # Thresholding (Otsu metodu yerine adaptive threshold)
             thresh = cv2.adaptiveThreshold(blurred, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
@@ -86,7 +86,7 @@ while True:
                     roi = frame[y:y+h, x:x+w]
 
                     # Küçük dikdörtgenleri büyüt
-                    scale_factor = max(2, int(400 / max(w, h)))
+                    scale_factor = max(1.5, int(300 / max(w, h)))  # Ölçek faktörünü düşürdüm çünkü rakamlar yeterince büyük
                     roi_resized = cv2.resize(roi, None, fx=scale_factor, fy=scale_factor, interpolation=cv2.INTER_LINEAR)
 
                     # Dilate işlemi
@@ -95,10 +95,10 @@ while True:
                     # OCR işlemi
                     results = reader.readtext(roi_dilated, detail=0)
 
-                    # Rakamları kontrol et (büyük/küçük rakamlar)
+                    # Yalnızca 1, 2, 3 rakamlarını kontrol et
                     for text in results:
                         text = text.replace(" ", "")
-                        if len(text) == 1 and text.isdigit():  # Tüm rakamları kontrol et
+                        if len(text) == 1 and text in ['1', '2', '3']:  # Sadece 1, 2, 3 rakamlarını kontrol et
                             detected_numbers.append(text)
                             positions[text] = (x, y)
                             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
