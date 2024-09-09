@@ -13,12 +13,18 @@ reader = easyocr.Reader(['en'], gpu=False)
 
 # Picamera2 ile kamera başlatma
 picam2 = Picamera2()
-config = picam2.create_preview_configuration(main={"format": "RGB888", "size": (640, 480)})  # Daha yüksek çözünürlük
+config = picam2.create_preview_configuration(main={"format": "RGB888", "size": (640, 480)})  # Orta çözünürlük
 picam2.configure(config)
 picam2.start()
 
 # Kernel tanımlaması (morfojik işlemler için)
 kernel = np.ones((3, 3), np.uint8)
+
+# Uzaktaki A4 boyutlarına göre sınır ayarı (örneğin 15 metre)
+A4_min_width = 50  # Tahmini minimum genişlik (piksel cinsinden)
+A4_min_height = 70  # Tahmini minimum yükseklik (piksel cinsinden)
+A4_max_width = 300  # Tahmini maksimum genişlik (piksel cinsinden)
+A4_max_height = 420  # Tahmini maksimum yükseklik (piksel cinsinden)
 
 last_checked_time = time.time()
 last_frame_time = time.time()  # İlk kare zamanını tanımla
@@ -41,8 +47,8 @@ while True:
     # Anlık FPS değerini ekrana yazdır
     print(f"Anlık FPS: {fps:.2f}")
     
-    # Her 7 saniyede bir işlemi gerçekleştirmek için kontrol
-    if time.time() - last_checked_time >= 7:
+    # Her 5 saniyede bir işlemi gerçekleştirmek için kontrol
+    if time.time() - last_checked_time >= 5:  # Daha sık işlem yapmak için süreyi kısalttık
         last_checked_time = time.time()
 
         try:
@@ -53,13 +59,13 @@ while True:
             gray = cv2.equalizeHist(gray)
 
             # Gürültüyü azaltmak için Gaussian blur
-            blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+            blurred = cv2.GaussianBlur(gray, (3, 3), 0)  # Kernel boyutunu küçülterek hız kazandık
             
             # Thresholding (Otsu metodu ile)
             _, thresh = cv2.threshold(blurred, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
             # Morfolojik işlemler: küçük gürültüleri temizleyip, rakamları daha belirgin hale getirme
-            thresh = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel, iterations=2)
+            thresh = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel, iterations=1)  # İşlem sayısını azalttık
 
             # Kenarları bul
             contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -74,8 +80,8 @@ while True:
                     x, y, w, h = cv2.boundingRect(contour)
                     print(f"Dikdörtgen bulundu: x={x}, y={y}, w={w}, h={h}")
 
-                    # Çok küçük veya çok büyük konturları atla
-                    if w < 5 or h < 5 or w > 800 or h > 800:
+                    # Uzak mesafeden bir A4'ün tahmini boyutlarına göre filtreleme
+                    if w < A4_min_width or h < A4_min_height or w > A4_max_width or h > A4_max_height:
                         print("Dikdörtgen boyutu uygun değil, atlanıyor...")
                         continue
 
@@ -83,7 +89,7 @@ while True:
                     roi = frame[y:y+h, x:x+w]
 
                     # Dinamik ölçekleme: küçük dikdörtgenleri büyüt (ölçekleme artırıldı)
-                    scale_factor = max(3, int(600 / max(w, h)))  # Daha fazla büyütme
+                    scale_factor = max(2, int(400 / max(w, h)))  # Ölçekleme hızını artırdık
                     roi_resized = cv2.resize(roi, None, fx=scale_factor, fy=scale_factor, interpolation=cv2.INTER_LINEAR)
 
                     # Dilate işlemi: rakamları daha belirgin yapmak için genişletme
