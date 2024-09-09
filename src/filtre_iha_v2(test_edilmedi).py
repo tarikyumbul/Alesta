@@ -13,11 +13,11 @@ reader = easyocr.Reader(['en'], gpu=False)
 
 # Picamera2 ile kamera başlatma
 picam2 = Picamera2()
-config = picam2.create_preview_configuration(main={"format": "RGB888", "size": (320, 240)})
+config = picam2.create_preview_configuration(main={"format": "RGB888", "size": (640, 480)})  # Daha yüksek çözünürlük
 picam2.configure(config)
 picam2.start()
 
-# Kernel tanımlaması
+# Kernel tanımlaması (morfojik işlemler için)
 kernel = np.ones((3, 3), np.uint8)
 
 last_checked_time = time.time()
@@ -25,7 +25,6 @@ last_frame_time = time.time()  # İlk kare zamanını tanımla
 fps = 0  # Başlangıç FPS değeri
 
 while True:
-
     current_time = time.time()
     
     # Her kare için geçen zamanı hesapla
@@ -83,8 +82,8 @@ while True:
                     # ROI (Region of Interest - İlgi Alanı) oluştur
                     roi = frame[y:y+h, x:x+w]
 
-                    # Dinamik ölçekleme: küçük dikdörtgenleri büyüt
-                    scale_factor = max(2, int(400 / max(w, h)))
+                    # Dinamik ölçekleme: küçük dikdörtgenleri büyüt (ölçekleme artırıldı)
+                    scale_factor = max(3, int(600 / max(w, h)))  # Daha fazla büyütme
                     roi_resized = cv2.resize(roi, None, fx=scale_factor, fy=scale_factor, interpolation=cv2.INTER_LINEAR)
 
                     # Dilate işlemi: rakamları daha belirgin yapmak için genişletme
