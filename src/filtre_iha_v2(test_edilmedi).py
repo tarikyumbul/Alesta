@@ -20,12 +20,6 @@ picam2.start()
 # Kernel tanımlaması (morfolojik işlemler için)
 kernel = np.ones((5, 5), np.uint8)  # Kernel boyutunu büyüttüm
 
-# A4'e uygun dikdörtgen sınırları
-A4_min_width = 50  
-A4_min_height = 70  
-A4_max_width = 400  # Resimdeki rakamlar büyük olduğu için sınırı biraz arttırdım
-A4_max_height = 500  
-
 last_checked_time = time.time()
 last_frame_time = time.time()  
 fps = 0  
@@ -78,9 +72,7 @@ while True:
                     # Dikdörtgen oluştur
                     x, y, w, h = cv2.boundingRect(contour)
 
-                    # Sınır kontrolü
-                    if w < A4_min_width or h < A4_min_height or w > A4_max_width or h > A4_max_height:
-                        continue
+                    # Dikdörtgen sınırı kontrolü kaldırıldı, her kontur işleniyor
 
                     # ROI oluştur
                     roi = frame[y:y+h, x:x+w]
