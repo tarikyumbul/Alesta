@@ -40,7 +40,7 @@ while True:
 
     print(f"Anlık FPS: {fps:.2f}")
     
-    if time.time() - last_checked_time >= 3:  # 3 saniyede bir işle
+    if time.time() - last_checked_time >= 5:  # 5 saniyede bir işle
         last_checked_time = time.time()
 
         try:
@@ -95,7 +95,7 @@ while True:
                             positions[text] = (x, y)
                             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
                             cv2.putText(frame, text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 255), 2)
-
+                            print(f"Bulunan rakam: {text}")
                 except Exception as e:
                     print(f"Contour işlemi sırasında hata: {e}")
                     continue
